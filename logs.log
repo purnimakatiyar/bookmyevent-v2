@@ -1,0 +1,15 @@
+29-11-2023 14:17:04 INFO     [logs.py:11] Application starts running
+29-11-2023 15:10:09 INFO     [logs.py:14] Application has been stopped
+08-12-2023 12:06:42 INFO     [logs.py:11] Application starts running
+08-12-2023 12:07:30 INFO     [logs.py:14] Application has been stopped
+08-12-2023 12:12:57 INFO     [logs.py:11] Application starts running
+08-12-2023 14:33:58 INFO     [logs.py:14] Application has been stopped
+08-12-2023 14:39:42 INFO     [logs.py:11] Application starts running
+08-12-2023 14:39:53 INFO     [logs.py:14] Application has been stopped
+08-12-2023 15:11:33 INFO     [logs.py:11] Application starts running
+08-12-2023 15:11:37 INFO     [logs.py:14] Application has been stopped
+11-12-2023 15:29:43 INFO     [logs.py:11] Application starts running
+11-12-2023 15:30:26 WARNING  [logs.py:17] A wrong access input of credentials done.
+11-12-2023 15:48:03 INFO     [logs.py:14] Application has been stopped
+11-12-2023 19:25:29 INFO     [logs.py:11] Application starts running
+11-12-2023 19:27:29 INFO     [logs.py:14] Application has been stopped
