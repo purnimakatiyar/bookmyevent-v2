@@ -1,7 +1,7 @@
-from src.settings.config import prompts, constants
-from src.utils.input import Input
-from src.controllers.user import User
-from src.utils import logs
+from settings.config import prompts, constants
+from utils.input import Input
+from controllers.user import User
+from utils import logs
 
 class UserHelper:
     

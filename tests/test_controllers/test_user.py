@@ -1,5 +1,5 @@
 import pytest
-from src.controllers.user import User
+from controllers.user import User
 from unittest.mock import MagicMock
 @pytest.fixture
 def setup(monkeypatch):

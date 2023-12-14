@@ -1,5 +1,5 @@
 import pytest
-from src.utils.input import Input
+from utils.input import Input
 
 
 @pytest.fixture

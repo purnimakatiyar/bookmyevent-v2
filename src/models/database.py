@@ -1,4 +1,4 @@
-from src.settings import config
+from settings import config
 import sqlite3
 
 

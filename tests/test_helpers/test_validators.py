@@ -1,5 +1,5 @@
 import pytest
-from src.helpers.validators import (
+from helpers.validators import (
     is_valid_username,
     check_valid_password,
     is_valid_password,

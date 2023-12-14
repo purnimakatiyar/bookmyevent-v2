@@ -1,5 +1,5 @@
 import pytest
-from src.utils.encrypt import hash_password, check_password
+from utils.encrypt import hash_password, check_password
 
 @pytest.fixture
 def hashed_password():

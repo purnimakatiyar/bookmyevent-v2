@@ -1,10 +1,10 @@
-from src.settings.config import prompts, constants
-from src.utils.input import Input
-from src.controllers.user import User
-from src.controllers.event import Event
-from src.controllers.booked_events import BookedEvents
-from src.utils.uuid_generator import generate_uuid
-from src.utils.tableprint import list_event_table, booked_event_table
+from settings.config import prompts, constants
+from utils.input import Input
+from controllers.user import User
+from controllers.event import Event
+from controllers.booked_events import BookedEvents
+from utils.uuid_generator import generate_uuid
+from utils.tableprint import list_event_table, booked_event_table
 
 
 class EventHelper:
