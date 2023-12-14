@@ -1,5 +1,5 @@
 import pytest
-from src.utils.uuid_generator import generate_uuid
+from utils.uuid_generator import generate_uuid
 
 def test_generate_uuid():
     for _ in range(10):

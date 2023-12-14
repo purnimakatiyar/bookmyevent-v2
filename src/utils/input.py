@@ -1,5 +1,5 @@
-from src.settings.config import prompts, constants
-from src.helpers.validators import is_valid_username, is_valid_name, is_valid_phone, validate_event_name, validate_event_date, validate_event_price, validate_event_tickets, check_valid_password
+from settings.config import prompts, constants
+from helpers.validators import is_valid_username, is_valid_name, is_valid_phone, validate_event_name, validate_event_date, validate_event_price, validate_event_tickets, check_valid_password
 from dateutil import parser
 import maskpass
 

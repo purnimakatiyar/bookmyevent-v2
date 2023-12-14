@@ -1,6 +1,6 @@
-from src.settings.config import queries
-from src.models.database import DBConnection
-from src.utils.uuid_generator import generate_uuid
+from settings.config import queries
+from models.database import DBConnection
+from utils.uuid_generator import generate_uuid
 
 
 class BookedEvents:

@@ -1,8 +1,8 @@
-from src.controllers.authentication import Authenticate
-from src.settings.config import prompts
-from src.utils.encrypt import check_password
-from src.utils.input import Input
-from src.utils import logs
+from controllers.authentication import Authenticate
+from settings.config import prompts
+from utils.encrypt import check_password
+from utils.input import Input
+from utils import logs
 
 class AuthenticateHelper:
     

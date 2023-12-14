@@ -1,7 +1,7 @@
-from src.settings.config import queries, constants
-from src.models.database import DBConnection
-from src.utils.encrypt import hash_password
-from src.utils.uuid_generator import generate_uuid
+from settings.config import queries, constants
+from models.database import DBConnection
+from utils.encrypt import hash_password
+from utils.uuid_generator import generate_uuid
 
 
 class User:

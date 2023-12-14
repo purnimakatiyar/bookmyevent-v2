@@ -1,4 +1,4 @@
-from src.utils.tableprint import list_event_table, booked_event_table
+from utils.tableprint import list_event_table, booked_event_table
 
 
 def test_list_event_table(capsys):

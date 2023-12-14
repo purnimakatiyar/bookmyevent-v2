@@ -1,7 +1,7 @@
 import pytest
 from unittest.mock import patch, MagicMock
-from src.helpers.authentication_helper import AuthenticateHelper
-from src.settings.config import prompts
+from helpers.authentication_helper import AuthenticateHelper
+from settings.config import prompts
 
 class TestAuthenticationHelper:
 
@@ -10,22 +10,22 @@ class TestAuthenticationHelper:
     def mock_authenticate(self):
         mock_auth = MagicMock()
         mock_auth.login.return_value = None
-        with patch("src.controllers.authentication.Authenticate", new=mock_auth) as mock_auth_class:
+        with patch("controllers.authentication.Authenticate", new=mock_auth) as mock_auth_class:
             yield mock_auth_class.return_value
 
     @pytest.fixture
     def mock_input(self):
-        with patch("src.utils.input.Input.login_input", return_value=("existing_user", "password")) as mock_input_class:
+        with patch("utils.input.Input.login_input", return_value=("existing_user", "password")) as mock_input_class:
             yield mock_input_class.return_value
 
     @pytest.fixture
     def mock_check_password(self):
-        with patch("src.utils.encrypt.check_password", return_value=True) as mock_check_password_func:
+        with patch("utils.encrypt.check_password", return_value=True) as mock_check_password_func:
             yield mock_check_password_func
 
     def test_login_successful(self, mock_input, mock_check_password):
         mock_auth = MagicMock(return_value = 'hello')
-        with patch("src.controllers.authentication.Authenticate.login", mock_auth):
+        with patch("controllers.authentication.Authenticate.login", mock_auth):
             helper = AuthenticateHelper()
             helper.login()
         assert mock_auth.called is True

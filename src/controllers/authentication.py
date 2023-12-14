@@ -1,5 +1,5 @@
-from src.models.database import DBConnection
-from src.settings.config import queries
+from models.database import DBConnection
+from settings.config import queries
 
 
 class Authenticate:

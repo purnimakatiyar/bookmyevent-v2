@@ -1,7 +1,7 @@
 import pytest
 import sqlite3
 from unittest.mock import patch, MagicMock
-from src.models.database import DBConnection
+from models.database import DBConnection
 
 
 @pytest.fixture
@@ -58,6 +58,3 @@ class TestDBConnection:
         with patch.object(db_connection, '__enter__', return_value=MagicMock()):
             with patch.object(db_connection, 'close'):
                 db_connection.delete_item(query, data)
-
-
-

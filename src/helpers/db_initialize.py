@@ -1,4 +1,4 @@
-from src.models.database import DBConnection
+from models.database import DBConnection
 db = DBConnection
 def create_auth_table():
     with db as cursor:

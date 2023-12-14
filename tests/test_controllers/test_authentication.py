@@ -1,7 +1,7 @@
 import pytest
 from unittest.mock import MagicMock
-from src.controllers.authentication import Authenticate
-from src.utils import encrypt
+from controllers.authentication import Authenticate
+from utils import encrypt
 
 @pytest.fixture
 def setup(monkeypatch):

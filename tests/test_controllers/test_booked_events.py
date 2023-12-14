@@ -1,5 +1,5 @@
 import pytest
-from src.controllers.booked_events import BookedEvents
+from controllers.booked_events import BookedEvents
 from unittest.mock import MagicMock
 @pytest.fixture
 def setup(monkeypatch):

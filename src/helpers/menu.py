@@ -1,8 +1,8 @@
-from src.helpers.authentication_helper import AuthenticateHelper
-from src.helpers.user_helper import UserHelper
-from src.helpers.event_helper import EventHelper
-from src.settings.config import constants, menu, prompts
-from src.utils import logs
+from helpers.authentication_helper import AuthenticateHelper
+from helpers.user_helper import UserHelper
+from helpers.event_helper import EventHelper
+from settings.config import constants, menu, prompts
+from utils import logs
 
 class Menu:
     

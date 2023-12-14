@@ -1,5 +1,5 @@
 import pytest
-from src.controllers.event import Event
+from controllers.event import Event
 from unittest.mock import MagicMock
 @pytest.fixture
 def setup(monkeypatch):

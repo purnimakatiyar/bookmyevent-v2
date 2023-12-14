@@ -1,6 +1,6 @@
 import logging
 from unittest.mock import patch
-from src.utils import logs
+from utils import logs
 
 def test_start_app(caplog):
     logs.start_app()

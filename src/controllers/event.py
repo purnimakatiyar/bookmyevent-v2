@@ -1,6 +1,6 @@
-from src.settings.config import constants, queries
-from src.utils.uuid_generator import generate_uuid
-from src.models.database import DBConnection
+from settings.config import constants, queries
+from utils.uuid_generator import generate_uuid
+from models.database import DBConnection
 
 
 class Event:
