@@ -9,6 +9,7 @@ class UserHelper:
         self.input = Input()
         self.user = User()
     
+    
     def signup(self, user_role):
         
         signup_details = self.input.signup_input()
@@ -25,6 +26,7 @@ class UserHelper:
         else:
             user.save_info()
             print(prompts["USER_ADDED"])
+            
             
     def remove_manager(self):
         username = self.input.remove_manager_input()
