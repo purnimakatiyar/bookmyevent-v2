@@ -1,5 +1,5 @@
 from settings.config import prompts, constants
-from utils.input import Input
+from helpers.input import Input
 from controllers.user import User
 from controllers.event import Event
 from controllers.booked_events import BookedEvents
@@ -9,9 +9,16 @@ from utils.tableprint import list_event_table, booked_event_table
 
 class EventHelper:
     
+    def __init__(self):
+        self.input = Input()
+        self.event = Event()
+        self.user = User()
+        self.booked_events = BookedEvents()
+        
+    
     def add_event(self, username) ->None:
-        event_details = Input().add_event_input()
-        user_id  = User().get_user_id(username)
+        event_details = self.input.add_event_input()
+        user_id  = self.user.get_user_id(username)
         event = Event(
         user_id = user_id,
         event_name = event_details[0],
@@ -26,8 +33,8 @@ class EventHelper:
         
         
     def remove_event(self, username):
-        event_name = Input().remove_event_input()
-        user_id = User().get_user_id(username)
+        event_name = self.input.remove_event_input()
+        user_id = self.user.get_user_id(username)
         event = Event(user_id = user_id, event_name = event_name)
         if event.get_event_by_user():
             event.remove_event()
@@ -37,7 +44,7 @@ class EventHelper:
           
           
     def view_event(self):
-        event_name = Input().view_event_input()
+        event_name = self.input.view_event_input()
         event = Event(event_name = event_name)
         event_details = event.get_event()
         if event_details is None:
@@ -54,7 +61,7 @@ class EventHelper:
             
           
     def list_events(self, username):
-        user_id = User().get_user_id(username)
+        user_id = self.user.get_user_id(username)
         event = Event(user_id = user_id)
         events = event.list_events()
         if events is not None:
@@ -64,18 +71,14 @@ class EventHelper:
             print("No events found for the user.")
         
     def list_all_events(self):
-        event = Event()
-        events = event.list_all_events()
+        events = self.event.list_all_events()
         list_event_table(events)
         
         
     def update_event(self, username, choice):
-        event = Event(user_id = User().get_user_id(username))
-        update_event_details = Input().update_event_input(choice)
-        if event.update_event(update_event_details[0],update_event_details[1], 
-                              update_event_details[2],update_event_details[3], 
-                              update_event_details[4],update_event_details[5], 
-                              update_event_details[6]):
+        event = Event(user_id = self.user.get_user_id(username))
+        update_event_details = self.input.update_event_input(choice)
+        if event.update_event(update_event_details):
             if choice == constants["ONE"]:
                 print(prompts["CHANGED_EVENTNAME"])
             elif choice == constants["TWO"]:  
@@ -89,8 +92,8 @@ class EventHelper:
                 
 
     def filter_event(self):
-        filter_details = Input().filter_event_input()
-        events = Event().filter_event(filter_details[0], filter_details[1])
+        filter_details = self.input.filter_event_input()
+        events = self.event.filter_event(filter_details[0], filter_details[1])
         if events:
             list_event_table(events)
             return      
@@ -99,8 +102,8 @@ class EventHelper:
             
             
     def search_event(self):
-        partial_name = Input().search_event_input()
-        event = Event()
+        partial_name = self.input.search_event_input()
+        event = self.event
         events = event.search_event(partial_name)
         if event:
             list_event_table(events)
@@ -109,8 +112,8 @@ class EventHelper:
             
             
     def view_booked_event(self, username):
-        user_id = User().get_user_id(username)
-        booked_events = BookedEvents().view_booked_events(user_id)
+        user_id = self.user.get_user_id(username)
+        booked_events = self.booked_events.view_booked_events(user_id)
         if booked_events:
             booked_event_table(booked_events)
             return
@@ -120,8 +123,8 @@ class EventHelper:
             
     def book_event(self, username) ->None:
         '''Method to book the event for customer'''
-        user_id = User().get_user_id(username)
-        book_event_details = Input().book_event_input()
+        user_id = self.user.get_user_id(username)
+        book_event_details = self.input.book_event_input()
         event_obj = Event(event_name = book_event_details[0])
         event = event_obj.get_event()
         if event is None:

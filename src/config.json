@@ -1,5 +1,6 @@
 {
     "queries": {
+        
         "INSERT_INTO_AUTHENTICATE" : "INSERT INTO Authenticate VALUES(?, ?, ?, ?)",
         "INSERT_USERDETAILS": "INSERT INTO UserDetails VALUES(?, ?, ?, ?)",
         "INSERT_EVENT": "INSERT INTO Events VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)",
@@ -116,7 +117,14 @@
         "CHANGED_EVENTPRICE": "\nEvent Price changed successfully.",
         "CHANGED_EVENTCATEGORY": "\nEvent category changed successfully.",
         "NO_TICKETS": "\nNo tickets found.",
-        "NO_EVENT": "\nNo events found."
+        "NO_EVENT": "\nNo events found.",
+        "EVENT_NAME_HEADER": "Event Name",
+        "EVENT_DATE_HEADER": "Event Date",
+        "LOCATION": "Location",
+        "RATING": "Rating",
+        "PRICE": "Price",
+        "CATEGORY": "Category",
+        "TICKET_QUANTITY": "Ticket Quantity"
     },
 
     "constants": {

@@ -1,6 +1,8 @@
 import pytest
 from controllers.booked_events import BookedEvents
 from unittest.mock import MagicMock
+
+
 @pytest.fixture
 def setup(monkeypatch):
     booked_event_details = {
@@ -10,6 +12,7 @@ def setup(monkeypatch):
         'ticket_quantity': 'ticket_quantity'
     }
     return BookedEvents(**booked_event_details)
+
 
 class TestBookedEvents:
 

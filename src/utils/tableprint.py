@@ -1,8 +1,9 @@
 from prettytable import PrettyTable
 
+
 def list_event_table(events):
     if events is None:
-        print("No events found.")
+        print("NO_EVENT")
     else:
         table = PrettyTable()
         table.field_names = ["EVENT_NAME", "EVENT_DATE", "LOCATION", "RATING", "PRICE", "CATEGORY", "TICKET_QUANTITY"]
@@ -13,15 +14,16 @@ def list_event_table(events):
         table.max_width["CATEGORY"] = 16
         print(table)
     
+    
 def booked_event_table(booked_events):
     if booked_events is None:
-        print("No events found.")
+        print("NO_EVENT")
     else:
         table = PrettyTable()
         table.field_names = ["EVENT_NAME", "EVENT_DATE", "TICKET_QUANTITY"]
         for booking in booked_events:
             table.add_row([booking[3], booking[4], booking[5]])
         table.align = "l"
-        table.max_width["EVENT_NAME"] = 10
+        table.max_width["EVENT_NAME_HEADER"] = 10
         table.max_width["TICKET_QUANTITY"] = 16
         print(table)

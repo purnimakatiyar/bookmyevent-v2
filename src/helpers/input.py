@@ -1,5 +1,5 @@
 from settings.config import prompts, constants
-from helpers.validators import is_valid_username, is_valid_name, is_valid_phone, validate_event_name, validate_event_date, validate_event_price, validate_event_tickets, check_valid_password
+from utils.validators import is_valid_username, is_valid_name, is_valid_phone, validate_event_name, validate_event_date, validate_event_price, validate_event_tickets, check_valid_password
 from dateutil import parser
 import maskpass
 
@@ -95,8 +95,16 @@ class Input:
             new_event_price = input(prompts["NEW_EVENT_PRICE"])
         elif choice == constants["FIVE"] and new_event_category is None:
             new_event_category = input(prompts["NEW_EVENT_CATEGORY"])
-        return (choice, existing_event_name, new_event_name, new_event_date,
-                               new_event_rating, new_event_price, new_event_category)
+        update_event_details = {
+                "CHOICE": choice,
+                "EXISTING_EVENT_NAME" : existing_event_name,
+                "NEW_EVENT_NAME": new_event_name,
+                "NEW_EVENT_DATE": new_event_date,
+                "NEW_EVENT_RATING": new_event_rating,
+                "NEW_EVENT_PRICE": new_event_price, 
+                "NEW_EVENT_CATEGORY": new_event_category
+        }
+        return update_event_details
         
             
     def update_account_input(self, choice):

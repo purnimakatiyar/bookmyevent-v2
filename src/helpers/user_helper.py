@@ -1,13 +1,17 @@
 from settings.config import prompts, constants
-from utils.input import Input
+from helpers.input import Input
 from controllers.user import User
 from utils import logs
 
 class UserHelper:
     
+    def __init__(self):
+        self.input = Input()
+        self.user = User()
+    
     def signup(self, user_role):
         
-        signup_details = Input().signup_input()
+        signup_details = self.input.signup_input()
         user = User(
         username = signup_details[0],
         password = signup_details[1],
@@ -23,19 +27,19 @@ class UserHelper:
             print(prompts["USER_ADDED"])
             
     def remove_manager(self):
-        username = Input().remove_manager_input()
-        user = User().get_user(username)
+        username = self.input.remove_manager_input()
+        user = self.user.get_user(username)
         if user is None:
             print(prompts["MANAGER_NOT_EXISTS"])
         else:
-            User().remove_manager(username)
+            self.user.remove_manager(username)
             logs.remove_manager(username)
             print(prompts["REMOVED_MANAGER"])
             
             
     def update_account(self, username, choice):
-        user = User(user_id = User().get_user_id(username),)
-        update_acc_details = Input().update_account_input(choice)
+        user = User(user_id = self.user.get_user_id(username),)
+        update_acc_details = self.input.update_account_input(choice)
         
         if user.update_account(update_acc_details[0], update_acc_details[1], update_acc_details[2], update_acc_details[3]):
             if choice == constants["ONE"]:

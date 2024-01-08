@@ -16,7 +16,7 @@ class TestEventHelper:
     ])
     def test_add_event(self, username, event_details):
         mock_add_event_input = MagicMock(return_value=event_details)
-        with patch("utils.input.Input.add_event_input", mock_add_event_input):
+        with patch("helpers.input.Input.add_event_input", mock_add_event_input):
             mock_user_id = MagicMock(return_value="userid12345")
             with patch("controllers.user.User.get_user_id", mock_user_id):
                 helper = EventHelper()
@@ -31,7 +31,7 @@ class TestEventHelper:
     ])
     def test_remove_event_with_existing_event(self, username, event_name):
         mock_remove_event_input = MagicMock(return_value=event_name)
-        with patch("utils.input.Input.remove_event_input", mock_remove_event_input):
+        with patch("helpers.input.Input.remove_event_input", mock_remove_event_input):
             mock_user_id = MagicMock(return_value="userid12345")
             with patch("controllers.user.User.get_user_id", mock_user_id):
                 mock_get_event_by_user = MagicMock(return_value=True)
@@ -50,7 +50,7 @@ class TestEventHelper:
     ])
     def test_remove_event_with_non_existent_event(self, username, event_name):
         mock_remove_event_input = MagicMock(return_value=event_name)
-        with patch("utils.input.Input.remove_event_input", mock_remove_event_input):
+        with patch("helpers.input.Input.remove_event_input", mock_remove_event_input):
             mock_user_id = MagicMock(return_value=username)
             with patch("controllers.user.User.get_user_id", mock_user_id):
                 mock_get_event_by_user = MagicMock(return_value=False)
@@ -66,7 +66,7 @@ class TestEventHelper:
 
     def test_view_event_with_existing_event(self):
         mock_view_event_input = MagicMock(return_value='event_name')
-        with patch("utils.input.Input.view_event_input", mock_view_event_input):
+        with patch("helpers.input.Input.view_event_input", mock_view_event_input):
             mock_get_event = MagicMock(return_value=["1", "2", "name12", "2023-06-12", "delhi", "6", "500", "demo"])
             with patch("controllers.event.Event.get_event", mock_get_event):
                 event_helper = EventHelper()
@@ -75,16 +75,16 @@ class TestEventHelper:
         assert result is None
 
 
-
     def test_view_event_with_non_existent_event(self):
         mock_view_event_input = MagicMock(return_value="event_name")
-        with patch("utils.input.Input.view_event_input", mock_view_event_input):
+        with patch("helpers.input.Input.view_event_input", mock_view_event_input):
             mock_get_event = MagicMock(return_value=None)
             with patch("controllers.event.Event.get_event", mock_get_event):
                 event_helper = EventHelper()
                 result = event_helper.view_event()
         assert mock_get_event.called is True
         assert result is None
+
 
     @pytest.mark.parametrize('username', [('user1234'), ('user4566')])
     def test_list_events_with_existing_events(self, username, mock_user_id):
@@ -96,6 +96,7 @@ class TestEventHelper:
                 result = event_helper.list_events(username)
         assert mock_list_events.called is True
         assert result is None
+
 
     @pytest.mark.parametrize('username', [('user1234'), ('user4566')])
     def test_list_events_with_non_existent_events(self, username, mock_user_id):
@@ -127,33 +128,36 @@ class TestEventHelper:
 
     def test_filter_event_with_no_events(self):
         mock_get_event = MagicMock(return_value=[])
-        with patch("utils.input.Input.filter_event_input", return_value="filter"):
+        with patch("helpers.input.Input.filter_event_input", return_value="filter"):
             with patch("controllers.event.Event.get_event", mock_get_event):
                 event_helper = EventHelper()
                 result = event_helper.filter_event()
         assert mock_get_event.called is False
         assert result is None
 
+
     def test_search_event_with_existing_events(self):
         mock_search_event = MagicMock(return_value=[["event_name1", "event_date1", "location1", 100, "category1", 1, 2, "b", "c"]])
 
-        with patch("utils.input.Input.search_event_input", return_value="partial_name"):
+        with patch("helpers.input.Input.search_event_input", return_value="partial_name"):
             with patch("controllers.event.Event.search_event", mock_search_event):
                 event_helper = EventHelper()
                 result = event_helper.search_event()
 
         assert mock_search_event.called is True
         assert result is None
+
 
     def test_search_event_with_non_existent_events(self):
         mock_search_event = MagicMock(return_value=None)
-        with patch("utils.input.Input.search_event_input", return_value="partial_name"):
+        with patch("helpers.input.Input.search_event_input", return_value="partial_name"):
             with patch("controllers.event.Event.search_event", mock_search_event):
                 event_helper = EventHelper()
                 result = event_helper.search_event()
 
         assert mock_search_event.called is True
         assert result is None
+
 
     @pytest.mark.parametrize("username, choice, update_event_details",[
         ("user1", "ONE", ("New Event Name", "2", "4", "300", "Sports", "2023-12-05", "Venue"),),
@@ -164,7 +168,7 @@ class TestEventHelper:
     ])
     def test_update_event(self, username, choice, update_event_details,  mock_user_id):
         with patch('controllers.user.User.get_user_id', mock_user_id):
-            with patch('utils.input.Input.update_event_input', return_value=update_event_details):
+            with patch('helpers.input.Input.update_event_input', return_value=update_event_details):
                 mock_update_event = MagicMock(return_value=True)
                 with patch('controllers.event.Event.update_event', mock_update_event):
                     event_helper = EventHelper()
@@ -172,6 +176,7 @@ class TestEventHelper:
 
         assert mock_update_event.called is True
         assert result is None
+
 
     @pytest.mark.parametrize('username', [('user123'), ('user790')])
     def test_view_booked_event_not_exists(self, username, mock_user_id):
@@ -193,6 +198,7 @@ class TestEventHelper:
                 result = event_helper.view_booked_event(username)
         assert mock_view_booked_events.called is True
         assert result is None
+
 
     def test_update_ticket(self):
         mock_event_instance = MagicMock()
