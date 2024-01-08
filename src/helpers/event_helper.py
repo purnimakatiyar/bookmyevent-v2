@@ -147,7 +147,7 @@ class EventHelper:
                 print(prompts["TICKET_STATUS"])
             else:
                 get_event_detail = event_obj.get_event()
-                event_id = get_event_detail[1]
+                event_id = get_event_detail[0]
                 updated_ticket_qty = current_ticket_qty[0] - tickets
                 event_obj.update_ticket(updated_ticket_qty, event_id)
                 return True
