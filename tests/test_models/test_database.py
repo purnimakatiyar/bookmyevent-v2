@@ -12,7 +12,6 @@ def db_connection():
 class TestDBConnection:
 
 
-
     def test_get_item(self, db_connection):
         query = "SELECT * FROM Events WHERE event_name = ?"
         data = ("demo",)
@@ -20,6 +19,7 @@ class TestDBConnection:
              with patch.object(db_connection, 'close'):
                 result = db_connection.get_item(query, data)
         assert result is None
+
 
     def test_get_items(self, db_connection):
         query = "SELECT * FROM Events WHERE category = ?"
@@ -29,12 +29,14 @@ class TestDBConnection:
                 result = db_connection.get_items(query, data)
         assert result == []
 
+
     def test_get_all_events(self, db_connection):
         query = " "
         with patch.object(db_connection, '__enter__', return_value=MagicMock()):
             with patch.object(db_connection, 'close'):
                 result = db_connection.get_all_events(query)
         assert result == []
+
 
     def test_insert_item(self, db_connection):
         query = "INSERT INTO Events (event_name, rating) VALUES (?, ?)"

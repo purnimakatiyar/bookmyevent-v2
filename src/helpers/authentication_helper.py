@@ -1,13 +1,16 @@
 from controllers.authentication import Authenticate
 from settings.config import prompts
 from utils.encrypt import check_password
-from utils.input import Input
+from helpers.input import Input
 from utils import logs
 
 class AuthenticateHelper:
     
+    def __init__(self):
+        self.input = Input()
+    
     def login(self):
-        auth_details = Input().login_input()
+        auth_details = self.input.login_input()
         obj = Authenticate(username = auth_details[0], password = auth_details[1])
         user = obj.login()
         if user is None:

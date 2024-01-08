@@ -2,6 +2,7 @@ import json
 
 
 def test_load_config_data():
+    
     with open("C:/Users/pkatiyar/OneDrive - WatchGuard Technologies Inc/Desktop/Myyyy proj/src/config.json", "r") as file:
         get_data = json.load(file)
 

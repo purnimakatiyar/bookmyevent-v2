@@ -1,5 +1,5 @@
 import pytest
-from helpers.validators import (
+from utils.validators import (
     is_valid_username,
     check_valid_password,
     is_valid_password,
@@ -11,6 +11,7 @@ from helpers.validators import (
     validate_event_price,
     validate_event_tickets
 )
+
 
 @pytest.mark.parametrize("validator_func, input_value, expected_result", [
     (is_valid_username, "purnima123", True),

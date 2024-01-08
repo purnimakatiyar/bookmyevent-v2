@@ -3,6 +3,7 @@ from unittest.mock import MagicMock
 from controllers.authentication import Authenticate
 from utils import encrypt
 
+
 @pytest.fixture
 def setup(monkeypatch):
     return Authenticate(username='test_user', password='test_password')

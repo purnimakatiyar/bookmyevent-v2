@@ -3,6 +3,7 @@ import sqlite3
 
 
 class DBConnection:
+    
     _instance = None
     
     def __new__(cls, connection=None):
@@ -14,10 +15,12 @@ class DBConnection:
 
         return cls._instance
 
+
     def __enter__(self) -> sqlite3.Connection:
         self.connection = sqlite3.connect(self.host)
         self.cursor = self.connection.cursor()
         return self.connection
+
 
     def __exit__(self, exc_type, exc_val, exc_tb):
         if exc_type or exc_val or exc_tb:
@@ -28,10 +31,12 @@ class DBConnection:
         else:
             self.connection.commit()
 
+
     @classmethod
     def set_testing_connection(cls, connection):
         cls._instance = None
         return cls(connection)
+
 
     def close(self):
         if self.connection:
@@ -67,7 +72,6 @@ class DBConnection:
                 print(error)
             return events
 
-    
     
     def insert_item(self, query, data):
         with db as cursor:

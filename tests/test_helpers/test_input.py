@@ -1,10 +1,11 @@
 import pytest
-from utils.input import Input
+from helpers.input import Input
 
 
 @pytest.fixture
 def instance():
     return Input()
+
 
 class TestInput:
 
@@ -13,6 +14,7 @@ class TestInput:
         monkeypatch.setattr('maskpass.advpass', lambda: 'password123')  # Mock masked password input
         result = instance.login_input()
         assert result == ('user123', 'password123')
+
 
     def test_get_valid_input(self, instance, monkeypatch):
         validation_sequence = [False, True]
@@ -51,10 +53,12 @@ class TestInput:
         result = instance.remove_event_input()
         assert result == 'Avengers'
 
+
     def test_remove_event_empty_input(self, instance, monkeypatch):
         monkeypatch.setattr('builtins.input', lambda _: '')
         result = instance.remove_event_input()
         assert result == ''
+
 
     def test_remove_event_whitespace_input(self, instance, monkeypatch):
         monkeypatch.setattr('builtins.input', lambda _: '    ')
@@ -67,30 +71,36 @@ class TestInput:
         result = instance.view_event_input()
         assert result == 'Avengers'
 
+
     def test_view_event_empty_input(self, instance, monkeypatch):
         monkeypatch.setattr('builtins.input', lambda _: '')
         result = instance.view_event_input()
         assert result == ''
+
 
     def test_view_event_whitespace_input(self, instance, monkeypatch):
         monkeypatch.setattr('builtins.input', lambda _: '    ')
         result = instance.view_event_input()
         assert result == '    '
 
+
     def test_search_event_valid_input(self, instance, monkeypatch):
         monkeypatch.setattr('builtins.input', lambda _: 'Avengers')
         result = instance.search_event_input()
         assert result == 'Avengers'
+
 
     def test_search_event_empty_input(self, instance, monkeypatch):
         monkeypatch.setattr('builtins.input', lambda _: '')
         result = instance.search_event_input()
         assert result == ''
 
+
     def test_search_event_whitespace_input(self, instance, monkeypatch):
         monkeypatch.setattr('builtins.input', lambda _: '    ')
         result = instance.search_event_input()
         assert result == '    '
+
 
     def test_book_event_valid_input(self, instance, monkeypatch):
         monkeypatch.setattr('builtins.input', lambda _: '4')
